@@ -1,4 +1,4 @@
-# ☁️ Cloud Infrastructure - Multi-Cloud Management
+# ☁️ Cloud Infrastructure - AWS
 
 Este repositório contém a Infraestrutura como Código (IaC) para o gerenciamento de ambientes multicloud (**AWS, OCI e Azure**), utilizando Terraform e scripts de automação em Python.
 
