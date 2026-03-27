@@ -4,7 +4,7 @@ Este repositório contém a Infraestrutura como Código (IaC) para o gerenciamen
 
 ## 🏗️ Estrutura do Projeto
 
-* **`/modules`**: Contém os blocos construtivos reutilizáveis (Ex: ECS).
+* **`/modules`**: Contém os blocos construtivos reutilizáveis (Ex: ECS, VPC).
 * **`/dev`**: Configurações específicas para o ambiente de Laboratório/Desenvolvimento.
 * **`repositories.tf`**: Repositorios para armazenamento das imagens de containers.
 
