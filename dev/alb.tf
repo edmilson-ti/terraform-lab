@@ -2,18 +2,18 @@
 
 # O Load Balancer (Publico)
 resource "aws_lb" "vendas_alb" {
-  name               = "alb-vendas-${var.environment}"
+  name               = "alb-vendas"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
   subnets            = module.vpc.public_subnet_ids # Usa as subnets 1a e 1b
 
-  tags = { Name = "alb-vendas-${var.environment}" }
+  tags = { Name = "alb-vendas" }
 }
 
 # O Target Group (Configurado para IP por causa do Fargate)
 resource "aws_lb_target_group" "vendas_tg" {
-  name        = "tg-vendas-${var.environment}"
+  name        = "tg-vendas"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = module.vpc.vpc_id
