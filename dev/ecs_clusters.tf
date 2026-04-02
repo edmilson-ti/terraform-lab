@@ -2,7 +2,7 @@
 
 # 1. Definição do Cluster
 resource "aws_ecs_cluster" "ecs_cluster_vendas" {
-  name = "cluster-vendas-${var.environment}"
+  name = "cluster-vendas"
 
   setting {
     name  = "containerInsights"
@@ -10,8 +10,7 @@ resource "aws_ecs_cluster" "ecs_cluster_vendas" {
   }
 
   tags = {
-    Name        = "ecs-cluster-vendas-${var.environment}"
-    Environment = var.environment
+    Name        = "ecs-cluster-vendas"
   }
 }
 
