@@ -1,7 +1,7 @@
 # dev/alb_security.tf
 
 resource "aws_security_group" "alb_sg" {
-  name        = "alb-sg-vendas-${var.environment}"
+  name        = "alb-sg-vendas"
   description = "Permite acesso HTTP publico ao balanceador"
   vpc_id      = module.vpc.vpc_id
 
@@ -21,5 +21,5 @@ resource "aws_security_group" "alb_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = { Name = "alb-sg-vendas-${var.environment}" }
+  tags = { Name = "alb-sg-vendas" }
 }

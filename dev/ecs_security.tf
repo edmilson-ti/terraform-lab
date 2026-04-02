@@ -21,5 +21,5 @@ egress {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = { Name = "ecs-sg-vendas-alltasks${var.environment}" }
+  tags = { Name = "ecs-sg-vendas-alltasks" }
 }

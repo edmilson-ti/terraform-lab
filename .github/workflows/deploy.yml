@@ -1,0 +1,43 @@
+name: Terraform AWS Pipeline
+
+on:
+  push:
+    branches: [ main, develop ] # O pipeline roda em ambas
+  pull_request:
+    branches: [ main ]         # Roda quando você abre um PR para a main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./dev # Ajuste para o diretório onde estão seus arquivos .tf
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Autenticar na AWS via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -input=false
+
+      # ESTE É O PULO DO GATO:
+      # O Apply só será executado se o push for na branch 'main'
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -auto-approve -input=false
+
